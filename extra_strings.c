@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _strcpy - copy a string from source to destination
+ * _strcpy - copie a string from source to destination
  * @source: the string source
  * @dest: the string destination
  *
@@ -17,7 +17,6 @@ char *_strcpy(char *dest, char *source)
 	dest[i] = '\0';
 	return (dest);
 }
-
 /**
  * _isalpha - check if the input is a letter
  * @c: the character to be checked

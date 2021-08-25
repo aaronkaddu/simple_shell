@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * main - start of this program
+ * main - the main function
  *
  * Return: (Success) 0 always
  * ------- (Fail) we drop out the looser :)
@@ -11,7 +11,7 @@ int main(void)
 	sh_t data;
 	int pl;
 
-	memset(&data, 0, sizeof(data));
+	_memset((void *)&data, 0, sizeof(data));
 	signal(SIGINT, signal_handler);
 	while (1)
 	{
@@ -46,7 +46,7 @@ int main(void)
 		free_data(&data);
 	}
 	free_data(&data);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -81,7 +81,8 @@ int read_line(sh_t *data)
 		{
 			new_size = size * 2;
 			length = csr_ptr - data->line;
-			data->line = realloc(data->line, new_size * sizeof(char));
+			data->line = _realloc(data->line, size * sizeof(char),
+						new_size * sizeof(char));
 			if (data->line == NULL)
 				return (FAIL);
 			size = new_size;
@@ -90,7 +91,6 @@ int read_line(sh_t *data)
 		}
 	}
 }
-
 #define DELIMITER " \n\t\r\a\v"
 /**
  * split_line - splits line to tokens
@@ -110,6 +110,8 @@ int split_line(sh_t *data)
 	if (data->args == NULL)
 		return (FAIL);
 	token = strtok(data->line, DELIMITER);
+	if (token == NULL)
+		return (FAIL);
 	while (token)
 	{
 		data->args[i++] =  token;
@@ -150,7 +152,6 @@ int parse_line(sh_t *data)
 	return (SUCCESS);
 }
 #undef DELIMITER
-
 /**
  * process_cmd - process command and execute process
  * @data: a pointer to the struct of data

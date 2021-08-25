@@ -20,12 +20,12 @@ extern char **environ;
 #define BUFSIZE 256
 #define TOKENSIZE 64
 #define PRINT(c) (write(STDOUT_FILENO, c, _strlen(c)))
-#define PROMPT "BAShell$ "
+#define PROMPT "$ "
 #define SUCCESS (1)
 #define FAIL (-1)
 #define NEUTRAL (0)
 
-/* Structs definitions */
+/* Struct */
 
 /**
  * struct sh_data - Global data structure
@@ -35,7 +35,7 @@ extern char **environ;
  * @cmd: the parsed command
  * @index: the command index
  * @oldpwd: the old path visited
- * @env: the environment
+ * @env: the environnment
  *
  * Description: A structure contains all the variables needed to manage
  * the program, memory and accessability
@@ -50,20 +50,18 @@ typedef struct sh_data
 	unsigned long int index;
 	char *env;
 } sh_t;
-
 /**
  * struct builtin - Manage the builtin functions
  * @cmd: the command line on string form
  * @f: the associated function
  *
- * Description: this struct made to manage builtins commands
+ * Description: this struct made to manage builtins cmd
  */
 typedef struct builtin
 {
 	char *cmd;
 	int (*f)(sh_t *data);
 } blt_t;
-
 /* ----------Process prototype------------*/
 int read_line(sh_t *);
 int split_line(sh_t *);

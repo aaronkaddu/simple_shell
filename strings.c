@@ -28,7 +28,6 @@ char *_strcat(char *first, char *second)
 	result[i] = '\0';
 	return (result);
 }
-
 /**
  * _strlen - finds the length of a given string
  * @str: the given string
@@ -38,15 +37,12 @@ char *_strcat(char *first, char *second)
  */
 int _strlen(char *str)
 {
-	char *ptr;
+	int len;
 
-	if (str == NULL)
-		return (-1);
-	for (ptr = str; *ptr; ptr++)
+	for (len = 0; str[len]; len++)
 		;
-	return (ptr - str);
+	return (len);
 }
-
 /**
  * _strcmp - compare two strings
  * @s1: the first given string
@@ -73,7 +69,6 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (cmp);
 }
-
 /**
  * _strchr - locates a character in a given string
  * @str: the given string
@@ -86,12 +81,13 @@ char *_strchr(char *str, char c)
 {
 	char *ptr;
 
+	if (str == NULL)
+		return (NULL);
 	for (ptr = str; *ptr; ptr++)
 		if (*ptr == c)
 			return (ptr);
 	return (NULL);
 }
-
 /**
  * _strdup - dupicates string
  * @str: the given string

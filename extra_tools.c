@@ -15,6 +15,7 @@ char *_itoa(unsigned int n)
 	s = malloc(len + 1);
 	if (!s)
 		return (NULL);
+	*s = '\0';
 	while (n / 10)
 	{
 		s[i] = (n % 10) + '0';
@@ -26,7 +27,6 @@ char *_itoa(unsigned int n)
 	s[i + 1] = '\0';
 	return (s);
 }
-
 /**
  * _atoi - converts character to integer
  * @c: the given character
@@ -68,7 +68,6 @@ int intlen(int num)
 	}
 	return (len);
 }
-
 /**
  * print_error - prints error
  * @data: the data structure pointer
@@ -78,12 +77,15 @@ int intlen(int num)
  */
 int print_error(sh_t *data)
 {
+	char *idx = _itoa(data->index);
+
 	PRINT("hsh: ");
-	PRINT(_itoa(data->index));
+	PRINT(idx);
 	PRINT(": ");
 	PRINT(data->args[0]);
 	PRINT(": ");
 	PRINT(data->error_msg);
+	free(idx);
 	return (0);
 }
 

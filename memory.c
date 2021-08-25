@@ -34,7 +34,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	return (result);
 }
-
 /**
  * _memset - fills a memory with constant byte
  * @s: pointer to memory area
@@ -53,7 +52,6 @@ char *_memset(char *s, char byt, unsigned int n)
 	}
 	return (s);
 }
-
 /**
  * free_data - frees data
  * @data: the data structure
@@ -69,9 +67,10 @@ int free_data(sh_t *data)
 	data->args = NULL;
 	free(data->cmd);
 	data->cmd = NULL;
+	free(data->error_msg);
+	data->error_msg = NULL;
 	return (0);
 }
-
 /**
  * _memcpy - cpies memory area
  * @dest: Destination memory area
