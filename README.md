@@ -1,7 +1,7 @@
 # BAShell
 
 
-This repository contains the files for alx-Holberton's simple_shell project. It can be compiled using GCC and will execute a simple shell that can be used for some basic tasks and programs most commonly found in the /bin/ folder.
+This repository contains the files for alx-Holberton's simple_shell project. It can be compiled using GCC and will execute a simple shell that can be used for some basic tasks and programs most commonly found in the $PATH.
 
 ## Pre-requisites
 Authorized functions and macros:
@@ -39,7 +39,7 @@ Authorized functions and macros:
 
 ### GCC command to compile:
 ```sh
-$| gcc -Wall -Werror -Wextra -pedantic *.c -o BAShell
+gcc -Wall -Werror -Wextra -pedantic *.c -o BAShell
 ```
 
 
@@ -78,12 +78,12 @@ $|
 
 The output of this program when executed it look like:
 ```sh
-$ exit
+exit
 ```
 
 ## Example
 
 ```sh
-$| ls -l *.c
+ls -l *.c
 ```
 
